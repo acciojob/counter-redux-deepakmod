@@ -1,13 +1,20 @@
+import React from 'react';
+import { useDispatch , useSelector } from 'react-redux';
+import { increment , decrement , reset } from './ActionCreation/CounterActionCreation.js';
 
-import React from "react";
-import './../styles/App.css';
+function App(props) {
 
-const App = () => {
-  return (
-    <div>
-        {/* Do not remove the main div */}
-    </div>
-  )
+    let counter = useSelector(state=>state.a)
+    let dispatch = useDispatch()
+
+    return (
+        <div>
+            <h1>{counter}</h1>
+            <button onClick={()=>{dispatch(increment(1))}}> Increment </button>
+            <button onClick={()=>{dispatch(decrement(1))}}> Decrement </button>
+            <button onClick={()=>{dispatch(reset())}}> Reset </button>
+        </div>
+    );
 }
 
-export default App
+export default App;
